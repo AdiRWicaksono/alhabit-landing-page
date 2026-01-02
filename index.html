@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AlHabit - Islamic Habit Tracker</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#14b8a6", // Updated per request to #14b8a6
+                        "primary-dark": "#0f766e",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#0f172a", // Darker slate for main bg
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1e293b", // Slate 800 for surfaces
+                        "surface-darker": "#020617", // Slate 950 for deep contrast
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display overflow-x-hidden selection:bg-primary selection:text-white transition-colors duration-300">
+<div class="relative flex flex-col min-h-screen w-full">
+<header class="sticky top-0 z-50 w-full bg-surface-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+<div class="px-4 md:px-10 py-3 flex items-center justify-between max-w-[1200px] mx-auto w-full">
+<div class="flex items-center gap-2 text-slate-900 dark:text-white">
+<div class="size-8 text-primary">
+<span class="material-symbols-outlined !text-[32px]">mosque</span>
+</div>
+<h2 class="text-xl font-bold leading-tight tracking-[-0.015em]">AlHabit</h2>
+</div>
+<div class="flex items-center gap-4">
+<a class="hidden md:flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary hover:bg-primary-dark transition-colors text-white text-sm font-bold leading-normal tracking-[0.015em]" href="#join-beta">
+<span class="truncate">Join Waitlist</span>
+</a>
+<button class="md:hidden text-slate-900 dark:text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</header>
+<div class="relative w-full py-12 md:py-20 lg:py-24 px-4 md:px-10 overflow-hidden">
+<div class="absolute inset-0 z-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none" style="background-image: radial-gradient(#14b8a6 1px, transparent 1px); background-size: 32px 32px;">
+</div>
+<div class="max-w-[1200px] mx-auto relative z-10">
+<div class="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center">
+<div class="flex flex-col gap-6 flex-1 text-center lg:text-left">
+<div class="flex justify-center lg:justify-start">
+<div class="inline-flex h-8 items-center justify-center gap-x-2 rounded-full bg-primary/10 border border-primary/20 px-4">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+<p class="text-primary-dark dark:text-primary text-xs font-bold uppercase tracking-wider">Closed Beta: 85% Full</p>
+</div>
+</div>
+<h1 class="text-slate-900 dark:text-white text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1] tracking-[-0.033em]">
+                            Build Habits for <br class="hidden lg:block"/> <span class="text-primary">this Life</span> and the <span class="text-primary">Next</span>
+</h1>
+<p class="text-slate-600 dark:text-slate-300 text-lg md:text-xl font-normal leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                            The all-in-one Islamic habit tracker designed to align your daily routine with your spiritual goals. Track prayers, Quran reading, and Sunnah habits beautifully.
+                        </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
+<a class="flex min-w-[160px] cursor-pointer items-center justify-center rounded-lg h-12 px-6 bg-primary hover:bg-primary-dark text-white text-base font-bold transition-all shadow-lg shadow-primary/25" href="#join-beta">
+                                Join Waitlist
+                            </a>
+<button class="flex min-w-[160px] cursor-pointer items-center justify-center rounded-lg h-12 px-6 bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white text-base font-bold hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-all">
+                                Learn More
+                            </button>
+</div>
+<div class="pt-6 flex gap-8 justify-center lg:justify-start opacity-80">
+<div>
+<p class="text-2xl font-bold text-slate-900 dark:text-white">500+</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">Muslims Joined</p>
+</div>
+<div class="w-px bg-slate-200 dark:bg-slate-700 h-10"></div>
+<div>
+<p class="text-2xl font-bold text-slate-900 dark:text-white">4.9/5</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">Community Rating</p>
+</div>
+</div>
+</div>
+<div class="w-full lg:w-1/2 flex justify-center lg:justify-end relative">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-primary/10 rounded-full blur-3xl -z-10"></div>
+<div class="relative w-full max-w-[400px] aspect-[9/16] bg-surface-darker rounded-[3rem] border-8 border-slate-900 dark:border-surface-darker shadow-2xl overflow-hidden group">
+<div class="absolute inset-0 bg-surface-light dark:bg-surface-darker flex flex-col">
+<div class="h-14 bg-primary/5 flex items-center justify-between px-6 shrink-0 border-b border-slate-100 dark:border-slate-800/50 relative z-20">
+<span class="material-symbols-outlined text-primary cursor-pointer">menu</span>
+<span class="text-sm font-bold text-slate-900 dark:text-white">AlHabit</span>
+<div class="relative">
+<span class="material-symbols-outlined text-primary cursor-pointer">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full border border-white dark:border-slate-900"></span>
+</div>
+</div>
+<div class="flex-1 overflow-x-auto snap-x snap-mandatory flex scrollbar-hide relative z-10" style="scroll-behavior: smooth;">
+<div class="min-w-full h-full p-6 flex flex-col gap-4 snap-center overflow-y-auto scrollbar-hide" id="slide1">
+<div class="h-32 rounded-2xl bg-gradient-to-br from-primary to-teal-600 p-4 text-white flex flex-col justify-between shadow-lg shrink-0">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-xs opacity-80">Next Prayer</p>
+<p class="text-2xl font-bold">Asr</p>
+</div>
+<span class="material-symbols-outlined">wb_sunny</span>
+</div>
+<p class="text-sm font-medium">03:45 PM</p>
+</div>
+<div class="flex gap-2 mt-2 shrink-0">
+<div class="h-2 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full w-3/4 bg-primary rounded-full"></div>
+</div>
+</div>
+<p class="text-xs text-slate-500 text-center shrink-0">Daily Goals: 75% Complete</p>
+<div class="space-y-3 mt-2">
+<div class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700/50">
+<div class="h-10 w-10 rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-sm">check</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold text-slate-900 dark:text-white">Morning Adhkar</p>
+<p class="text-xs text-slate-500">Sunnah • 10 mins</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700/50">
+<div class="h-10 w-10 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-400 flex items-center justify-center border-2 border-slate-200 dark:border-slate-600 shrink-0"></div>
+<div class="flex-1">
+<p class="text-sm font-bold text-slate-900 dark:text-white">Read Surah Kahf</p>
+<p class="text-xs text-slate-500">Friday Special</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700/50">
+<div class="h-10 w-10 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-400 flex items-center justify-center border-2 border-slate-200 dark:border-slate-600 shrink-0"></div>
+<div class="flex-1">
+<p class="text-sm font-bold text-slate-900 dark:text-white">Taraweeh</p>
+<p class="text-xs text-slate-500">Ramadan Goal</p>
+</div>
+</div>
+</div>
+</div>
+<div class="min-w-full h-full p-6 flex flex-col gap-4 snap-center overflow-y-auto scrollbar-hide" id="slide2">
+<h3 class="font-bold text-slate-900 dark:text-white text-lg shrink-0">Quran Tracker</h3>
+<div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700/50 shrink-0">
+<div class="flex justify-between items-center mb-3">
+<span class="text-xs font-bold text-primary uppercase tracking-wider">Last Read</span>
+<span class="material-symbols-outlined text-slate-400 text-sm">bookmark</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="h-12 w-12 rounded-lg bg-primary/20 flex items-center justify-center text-primary font-bold text-lg shrink-0">18</div>
+<div>
+<p class="font-bold text-slate-900 dark:text-white">Surah Al-Kahf</p>
+<p class="text-xs text-slate-500">Ayah 45 • Page 298</p>
+</div>
+</div>
+</div>
+<h4 class="text-sm font-semibold text-slate-500 mt-2 shrink-0">Recent</h4>
+<div class="space-y-2">
+<div class="flex items-center justify-between p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors cursor-pointer border border-transparent hover:border-slate-100 dark:hover:border-slate-700/50">
+<div class="flex items-center gap-3">
+<span class="text-xs font-bold text-slate-400 w-4">01</span>
+<div>
+<p class="text-sm font-bold text-slate-900 dark:text-white">Al-Fatiha</p>
+<p class="text-xs text-slate-500">The Opening</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-300 text-sm">play_circle</span>
+</div>
+<div class="flex items-center justify-between p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors cursor-pointer border border-transparent hover:border-slate-100 dark:hover:border-slate-700/50">
+<div class="flex items-center gap-3">
+<span class="text-xs font-bold text-slate-400 w-4">36</span>
+<div>
+<p class="text-sm font-bold text-slate-900 dark:text-white">Ya-Sin</p>
+<p class="text-xs text-slate-500">The Heart</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-300 text-sm">play_circle</span>
+</div>
+<div class="flex items-center justify-between p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors cursor-pointer border border-transparent hover:border-slate-100 dark:hover:border-slate-700/50">
+<div class="flex items-center gap-3">
+<span class="text-xs font-bold text-slate-400 w-4">67</span>
+<div>
+<p class="text-sm font-bold text-slate-900 dark:text-white">Al-Mulk</p>
+<p class="text-xs text-slate-500">The Sovereignty</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-300 text-sm">play_circle</span>
+</div>
+</div>
+</div>
+<div class="min-w-full h-full p-6 flex flex-col gap-4 snap-center overflow-y-auto scrollbar-hide" id="slide3">
+<h3 class="font-bold text-slate-900 dark:text-white text-lg shrink-0">Your Progress</h3>
+<div class="h-44 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700/50 p-4 flex items-end justify-between gap-2 shrink-0">
+<div class="w-full bg-primary/20 rounded-t-sm h-[40%] relative group transition-all hover:bg-primary/30"></div>
+<div class="w-full bg-primary/40 rounded-t-sm h-[60%] relative group transition-all hover:bg-primary/50"></div>
+<div class="w-full bg-primary/30 rounded-t-sm h-[50%] relative group transition-all hover:bg-primary/40"></div>
+<div class="w-full bg-primary/60 rounded-t-sm h-[75%] relative group transition-all hover:bg-primary/70"></div>
+<div class="w-full bg-primary/80 rounded-t-sm h-[85%] relative group transition-all hover:bg-primary/90"></div>
+<div class="w-full bg-primary rounded-t-sm h-[95%] relative group">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-[10px] font-bold py-1 px-2 rounded shadow-lg">95%</div>
+</div>
+<div class="w-full bg-primary/50 rounded-t-sm h-[65%] relative group transition-all hover:bg-primary/60"></div>
+</div>
+<div class="flex justify-between text-[10px] text-slate-400 uppercase font-bold px-1 shrink-0">
+<span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span>
+</div>
+<div class="grid grid-cols-2 gap-3 mt-2 shrink-0">
+<div class="p-3 rounded-xl bg-green-500/10 border border-green-500/20">
+<p class="text-xs text-green-600 dark:text-green-400 font-bold">Current Streak</p>
+<p class="text-xl font-black text-slate-900 dark:text-white mt-1">12 <span class="text-xs font-normal text-slate-500">days</span></p>
+</div>
+<div class="p-3 rounded-xl bg-blue-500/10 border border-blue-500/20">
+<p class="text-xs text-blue-600 dark:text-blue-400 font-bold">Total Habits</p>
+<p class="text-xl font-black text-slate-900 dark:text-white mt-1">145</p>
+</div>
+</div>
+</div>
+</div>
+<div class="h-10 flex justify-center items-center gap-2 mb-1 shrink-0 relative z-20">
+<a aria-label="Go to slide 1" class="w-2 h-2 rounded-full bg-primary cursor-pointer hover:scale-125 transition-transform" href="#slide1"></a>
+<a aria-label="Go to slide 2" class="w-2 h-2 rounded-full bg-slate-300 dark:bg-slate-700 cursor-pointer hover:bg-primary transition-colors hover:scale-125" href="#slide2"></a>
+<a aria-label="Go to slide 3" class="w-2 h-2 rounded-full bg-slate-300 dark:bg-slate-700 cursor-pointer hover:bg-primary transition-colors hover:scale-125" href="#slide3"></a>
+</div>
+</div>
+<div class="absolute inset-0 shadow-inner rounded-[3rem] pointer-events-none border border-white/10 z-30"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="w-full bg-surface-light dark:bg-background-dark py-16 px-4 md:px-10 border-t border-slate-100 dark:border-slate-800">
+<div class="max-w-[1200px] mx-auto">
+<div class="text-center mb-12">
+<h2 class="text-primary font-bold text-sm uppercase tracking-widest mb-2">App Features</h2>
+<h3 class="text-3xl md:text-4xl font-black text-slate-900 dark:text-white">Holistic Islamic Growth</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="flex flex-col gap-4 p-6 rounded-2xl bg-white dark:bg-surface-dark border border-slate-100 dark:border-slate-700 hover:shadow-xl hover:shadow-primary/5 dark:hover:shadow-none hover:border-primary/30 dark:hover:border-primary/30 transition-all group">
+<div class="h-12 w-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">schedule</span>
+</div>
+<div>
+<h4 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Smart Prayer Tracking</h4>
+<p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                                Never miss a Salah with precise, location-based notifications that adjust to your madhhab and location automatically.
+                            </p>
+</div>
+</div>
+<div class="flex flex-col gap-4 p-6 rounded-2xl bg-white dark:bg-surface-dark border border-slate-100 dark:border-slate-700 hover:shadow-xl hover:shadow-primary/5 dark:hover:shadow-none hover:border-primary/30 dark:hover:border-primary/30 transition-all group">
+<div class="h-12 w-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">menu_book</span>
+</div>
+<div>
+<h4 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Sunnah Habits</h4>
+<p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                                Seamlessly incorporate daily Sunnah acts like Morning/Evening Adhkar, Wudu, and extra prayers into your routine.
+                            </p>
+</div>
+</div>
+<div class="flex flex-col gap-4 p-6 rounded-2xl bg-white dark:bg-surface-dark border border-slate-100 dark:border-slate-700 hover:shadow-xl hover:shadow-primary/5 dark:hover:shadow-none hover:border-primary/30 dark:hover:border-primary/30 transition-all group">
+<div class="h-12 w-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">trending_up</span>
+</div>
+<div>
+<h4 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Visual Progress</h4>
+<p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                                Watch your Iman grow with beautiful analytics, consistency streaks, and monthly spiritual reports.
+                            </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="w-full bg-slate-50 dark:bg-surface-darker py-16 px-4 md:px-10 border-t border-slate-200 dark:border-slate-800">
+<div class="max-w-[1200px] mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
+<div class="max-w-xl">
+<h3 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-3">Why Join the Closed Beta?</h3>
+<p class="text-slate-600 dark:text-slate-400">Be among the first 1,000 users to shape the future of Islamic habit tracking.</p>
+</div>
+<div class="hidden md:block">
+<span class="material-symbols-outlined text-6xl text-slate-200 dark:text-slate-800">stars</span>
+</div>
+</div>
+<div class="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-6">
+<div class="flex flex-col gap-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-surface-dark p-6 shadow-sm hover:border-primary/40 dark:hover:border-primary/40 transition-colors">
+<div class="text-primary">
+<span class="material-symbols-outlined !text-[32px]">lock_open</span>
+</div>
+<div class="flex flex-col gap-1">
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight">Early Access</h2>
+<p class="text-slate-600 dark:text-slate-400 text-sm font-normal leading-normal">
+                                Get exclusive access to the app months before the public release on App Store and Play Store.
+                            </p>
+</div>
+</div>
+<div class="flex flex-col gap-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-surface-dark p-6 shadow-sm hover:border-primary/40 dark:hover:border-primary/40 transition-colors">
+<div class="text-primary">
+<span class="material-symbols-outlined !text-[32px]">edit_note</span>
+</div>
+<div class="flex flex-col gap-1">
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight">Shape the Product</h2>
+<p class="text-slate-600 dark:text-slate-400 text-sm font-normal leading-normal">
+                                Your feedback and feature requests will directly influence the development roadmap.
+                            </p>
+</div>
+</div>
+<div class="flex flex-col gap-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-surface-dark p-6 shadow-sm hover:border-primary/40 dark:hover:border-primary/40 transition-colors">
+<div class="text-primary">
+<span class="material-symbols-outlined !text-[32px]">card_giftcard</span>
+</div>
+<div class="flex flex-col gap-1">
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight">Premium for Free</h2>
+<p class="text-slate-600 dark:text-slate-400 text-sm font-normal leading-normal">
+                                All beta testers receive a Lifetime Premium membership as a thank you for your support.
+                            </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="w-full py-20 px-4 md:px-10 bg-primary/5 dark:bg-surface-dark border-t border-slate-200 dark:border-slate-800 relative overflow-hidden" id="join-beta">
+<div class="absolute -right-20 -top-20 w-64 h-64 rounded-full bg-primary/10 blur-3xl pointer-events-none"></div>
+<div class="absolute -left-20 -bottom-20 w-64 h-64 rounded-full bg-primary/10 blur-3xl pointer-events-none"></div>
+<div class="max-w-[600px] mx-auto bg-white dark:bg-surface-darker rounded-2xl p-8 md:p-12 shadow-2xl border border-slate-100 dark:border-slate-700 relative z-10">
+<div class="text-center mb-8">
+<div class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary mb-4">
+<span class="material-symbols-outlined">mail</span>
+</div>
+<h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-2">Secure Your Spot</h2>
+<p class="text-slate-500 dark:text-slate-400">Join the waiting list. We'll notify you when it's your turn to test.</p>
+</div>
+<form class="flex flex-col gap-4">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300" for="name">Full Name</label>
+<input class="h-12 w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-surface-dark px-4 text-slate-900 dark:text-white placeholder-slate-400 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" id="name" placeholder="e.g. Omar Ali" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300" for="email">Email Address</label>
+<input class="h-12 w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-surface-dark px-4 text-slate-900 dark:text-white placeholder-slate-400 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" id="email" placeholder="e.g. omar@example.com" type="email"/>
+</div>
+<div class="flex items-start gap-3 mt-2">
+<div class="flex h-5 items-center">
+<input class="h-4 w-4 rounded border-slate-300 dark:border-slate-600 text-primary focus:ring-primary bg-white dark:bg-surface-dark" id="terms" type="checkbox"/>
+</div>
+<label class="text-xs text-slate-500 dark:text-slate-400 leading-tight pt-0.5" for="terms">
+                            I agree to receive email updates about AlHabit's beta program and product launch.
+                        </label>
+</div>
+<button class="mt-4 flex w-full cursor-pointer items-center justify-center rounded-lg h-12 bg-primary hover:bg-primary-dark text-white text-base font-bold transition-all shadow-md" type="button">
+                        Join Waitlist
+                    </button>
+<p class="text-center text-xs text-slate-400 mt-2">No spam, unsubscribe anytime.</p>
+</form>
+</div>
+</div>
+<footer class="bg-white dark:bg-background-dark border-t border-slate-200 dark:border-slate-800 py-10 px-4 md:px-10">
+<div class="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-2 text-slate-900 dark:text-white">
+<div class="size-6 text-primary">
+<span class="material-symbols-outlined">mosque</span>
+</div>
+<span class="text-lg font-bold">AlHabit</span>
+</div>
+<div class="flex gap-6 text-sm text-slate-500 dark:text-slate-400 font-medium">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="#">Contact</a>
+</div>
+<div class="flex gap-4">
+<a class="text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="sr-only">Twitter</span>
+<svg class="h-5 w-5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+</a>
+<a class="text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="sr-only">Instagram</span>
+<svg class="h-5 w-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.85-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+</a>
+</div>
+</div>
+<div class="max-w-[1200px] mx-auto text-center mt-8 text-xs text-slate-400">
+                © 2023 AlHabit Inc. All rights reserved.
+            </div>
+</footer>
+</div>
+
+</body></html>
