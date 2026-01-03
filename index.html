@@ -7,6 +7,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script id="tailwind-config">
         tailwind.config = {
@@ -38,6 +39,43 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+        .swiper-pagination-bullet {
+    width: 8px !important;
+    height: 8px !important;
+    border-radius: 9999px;
+    background-color: #94a3b8;
+    opacity: 1;
+    transition: all 0.3s ease;
+}
+.dark .swiper-pagination-bullet {
+    background-color: #475569;
+}
+.swiper-pagination-bullet:hover {
+    background-color: #14b8a6;
+    transform: scale(1.25);
+}
+.swiper-pagination-bullet-active {
+    background-color: #14b8a6 !important;
+    transform: scale(1.25);
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    color: #14b8a6 !important;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 9999px;
+    width: 44px;
+    height: 44px;
+    backdrop-filter: blur(4px);
+}
+.dark .swiper-button-prev,
+.dark .swiper-button-next {
+    background: rgba(15, 23, 42, 0.7);
+}
+.swiper-button-prev::after,
+.swiper-button-next::after {
+    font-size: 24px !important;
+}
     </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display overflow-x-hidden selection:bg-primary selection:text-white transition-colors duration-300">
@@ -290,6 +328,42 @@
 </div>
 </div>
 <div class="w-full bg-slate-50 dark:bg-surface-darker py-16 px-4 md:px-10 border-t border-slate-200 dark:border-slate-800">
+  <div class="max-w-[1200px] mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="text-primary font-bold text-sm uppercase tracking-widest mb-2">App Screenshots</h2>
+      <h3 class="text-3xl md:text-4xl font-black text-slate-900 dark:text-white">See AlHabit in Action</h3>
+    </div>
+
+    <!-- Screenshot Carousel -->
+    <div class="swiper screenshotSwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide flex justify-center">
+          <img src="https://i.ibb.co.com/fzyP7ghQ/1000042214.jpg" alt="AlHabit Profile and Achievements Screen" class="max-w-[400px] w-full h-auto rounded-[3rem] border-8 border-slate-900 dark:border-surface-darker shadow-2xl">
+        </div>
+        <div class="swiper-slide flex justify-center">
+          <img src="https://i.ibb.co.com/KcxB0P9Y/1000042215.jpg" alt="AlHabit Recent Activity Log with Prayers and Quran Reading" class="max-w-[400px] w-full h-auto rounded-[3rem] border-8 border-slate-900 dark:border-surface-darker shadow-2xl">
+        </div>
+        <div class="swiper-slide flex justify-center">
+          <img src="https://i.ibb.co.com/Csb9ZX7S/1000042216.jpg" alt="AlHabit Prayer Tracking Dashboard with Current and Next Prayer Times" class="max-w-[400px] w-full h-auto rounded-[3rem] border-8 border-slate-900 dark:border-surface-darker shadow-2xl">
+        </div>
+        <div class="swiper-slide flex justify-center">
+          <img src="https://i.ibb.co.com/DfNGQX1K/1000042217.jpg" alt="AlHabit Fasting Habits Selection Screen" class="max-w-[400px] w-full h-auto rounded-[3rem] border-8 border-slate-900 dark:border-surface-darker shadow-2xl">
+        </div>
+        <div class="swiper-slide flex justify-center">
+          <img src="https://i.ibb.co.com/kVjYwQYW/1000042218.jpg" alt="AlHabit Settings Page with Location, Theme, and Accent Color Options" class="max-w-[400px] w-full h-auto rounded-[3rem] border-8 border-slate-900 dark:border-surface-darker shadow-2xl">
+        </div>
+      </div>
+
+      <!-- Navigation arrows (visible on md+ screens) -->
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+
+      <!-- Pagination dots -->
+      <div class="swiper-pagination mt-8"></div>
+    </div>
+  </div>
+</div>
+<div class="w-full bg-slate-50 dark:bg-surface-darker py-16 px-4 md:px-10 border-t border-slate-200 dark:border-slate-800">
 <div class="max-w-[1200px] mx-auto">
 <div class="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
 <div class="max-w-xl">
@@ -401,5 +475,36 @@
             </div>
 </footer>
 </div>
+<script>
+  new Swiper('.screenshotSwiper', {
+    loop: true,
+    autoplay: {
+      delay: 3500,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    spaceBetween: 40,
+    slidesPerView: 1.3,
+    centeredSlides: true,
+    breakpoints: {
+      768: {
+        slidesPerView: 2.5,
+        centeredSlides: false,
+      },
+      1024: {
+        slidesPerView: 3,
+        centeredSlides: false,
+      },
+    },
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 </body></html>
